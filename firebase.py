@@ -11,7 +11,7 @@ def config():
 	#   initialize firestore instance
 	db = firestore.client()
 	collection = db.collection(u'numbers')
-
+ 
 	return collection
 
 
