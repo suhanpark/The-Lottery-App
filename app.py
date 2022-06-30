@@ -1,4 +1,27 @@
 from fastapi import FastAPI
+from lotto import *
+from firebase import *
+from mass_scraper import *
+from datetime import datetime
 
 app = FastAPI()
+M = Mega()
+S = Scraper()
+
+@app.get("/roster")
+def getRoster():
+    roster =  M.get_roster()
+    return roster.split('\n')
+
+@app.get("/date")
+def getDate():
+    return formatter(str(datetime.now()))
+
+@app.get('/updated date')
+def getLastdate():
+    return get_date(M.refs)
+
+@app.get('/info')
+def getInformation():
+    return get_info(M.refs)
 

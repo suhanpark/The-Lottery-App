@@ -27,6 +27,19 @@ class Scraper(Mega):
 		source = BeautifulSoup(website, "html.parser")
 		return source
 
+	def info_extracter(self) -> dict:
+		s1 = self.get_source(self.link)
+		s2 = self.get_source(self.link1)
+
+		src1 = s1.find('div', attrs={'class': 'winners'})
+		winners = src1.get_text(strip=True)
+		src2 = s2.find('div', attrs={'class': 'nextjackpot fullWidth'})
+		jackpot = src2.get_text(strip=True)
+
+		info = {'jackpot': jackpot[23:],
+          		'lastwinners': winners[20:]}
+		return info
+  
 	def scraper(self, source, initial=False):
 		reference = self.categories if initial else self.refs
 		nums_src = source.findAll('li', attrs={'class': 'ball'})
@@ -56,6 +69,7 @@ class Scraper(Mega):
 		self.refs['lo'].set(self.categories['lo'])
 		self.refs['mega_number'].set(self.categories['mega_number'])
 		self.refs['last_update'].update({u'timestamp': current_date})
+		self.refs['info'].set(self.info_extracter())
 
 	def day_scrape(self) -> None:
 		current_date = formatter(str(datetime.now()))
@@ -63,3 +77,4 @@ class Scraper(Mega):
 		source = self.get_source(link)
 		self.scraper(source)
 		self.refs['last_update'].update({u'timestamp': current_date})
+		self.refs['info'].set(self.info_extracter())

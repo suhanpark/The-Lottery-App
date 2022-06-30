@@ -24,6 +24,16 @@ def toDict(references: dict, category: str) -> dict:
 	"""
 	return references[category].get().to_dict()
 
+def get_info(references: dict, category='info') -> tuple:
+	"""
+	_summary_
+
+	:param dict references: _description_
+	:param str category: _description_, defaults to 'info'
+	:return tuple: _description_
+	"""
+	info = toDict(references, category)
+	return info['jackpot'], info['lastwinners']  
 
 def formatter(time: str) -> str:
 	"""
@@ -43,11 +53,11 @@ def get_date(references: dict) -> str:
 	return ld_dict.get().to_dict()['timestamp']
 
 
-def num_update(doc: DocumentReference | dict, value: str, D: bool) -> None:
+def num_update(doc, value: str, D: bool) -> None:
 	"""
 	updates the count of the number accordingly.
 	:param D:
-	:param doc: firebase document reference of 'numbers' document
+	:param doc: firebase document reference of 'numbers' document or a dictionary
 	:param value: number that is sought to be updated
 	:return: None
 	"""

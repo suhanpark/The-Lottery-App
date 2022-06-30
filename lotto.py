@@ -1,23 +1,25 @@
 from itertools import combinations
 from firebase import *
 from collections import Counter
-from typing import List, Dict
+from typing import Callable, List, Dict, Optional
 
 
 class Mega:
-	__slots__ = ['link', 'root', 'nums'
+	__slots__ = ['link', 'link1', 'root', 'nums'
 	             'latest', 'refs', 'last_update']
 
 	def __init__(self):
 		root = config()
 		self.link = 'https://www.lottery.net/mega-millions/numbers/'
+		self.link1 = 'https://www.lottery.net/mega-millions'
 		self.refs = {
 			'he': root.document(u'high_even'),
 			'ho': root.document(u'high_odd'),
 			'le': root.document(u'low_even'),
 			'lo': root.document(u'low_odd'),
 			'mega_number': root.document(u'mega_number'),
-			'last_update': root.document(u'last_update')
+			'last_update': root.document(u'last_update'),
+			'info': root.document(u'info')
 		}
 
 	def __str__(self):
@@ -49,12 +51,12 @@ class Mega:
 
 	@staticmethod
 	def maker(count: int, first: list, second: list):
-		return f'\n{count}. Numbers: {first[0]}, {first[1]}, {first[2]}, {second[0]}, {second[1]}'
-
-	def get_roster(self) -> str:
+		return f'\n{count}. Numbers: {first[0]}, {first[1]}, {first[2]}, {second[0]}, {second[1]}'		
+ 
+	def get_roster(self):
 		"""
 		O(4N+12+12)=O(4N+24)~O(N)
-		:return:
+		:return: string or dictionary
 		"""
 		mult_doc = self.get_three(toDict(self.refs, 'mega_number'))
 		high_even = self.get_three(toDict(self.refs, 'he'))
