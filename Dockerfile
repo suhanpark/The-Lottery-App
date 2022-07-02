@@ -1,13 +1,15 @@
 FROM python:3.10
 
-WORKDIR /code
+RUN apt-get update
 
-COPY ./requirements.txt /code/requirements.txt
+RUN apt-get install -y --no-install-recommends
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+WORKDIR /The-Lottery-App
 
-# 
-COPY ./main.py /code/
+COPY ./requirements.txt .
 
-# 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+RUN pip install -r requirements.txt
+
+COPY . /The-Lottery-App
+
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "80"]
