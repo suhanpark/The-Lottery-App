@@ -2,10 +2,8 @@ from fastapi import FastAPI
 from lotto import *
 from firebase import *
 from mass_scraper import *
-from mangum import Mangum
 
 app = FastAPI()
-handler = Mangum(app)
 
 M = Mega()
 S = Scraper()
