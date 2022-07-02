@@ -79,3 +79,11 @@ class Mega:
 					roster += self.maker(count, high_even, tup)
 				count += 1
 		return roster
+	
+	def getAllNumbers(self) -> dict:
+		result = {}
+		for key, value in self.refs.items():
+			if key == 'mega_number':
+				return result
+			result = result | toDict(self.refs, key)
+       

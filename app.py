@@ -25,3 +25,10 @@ def getLastdate():
 def getInformation():
     return get_info(M.refs)
 
+@app.get('/numbers')
+def getNumbers():
+    return M.getAllNumbers()
+
+@app.get('/multipliers')
+def getMultipliers():
+    return toDict(M.refs, 'mega_number')
