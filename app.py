@@ -2,11 +2,14 @@ from fastapi import FastAPI
 from lotto import *
 from firebase import *
 from mass_scraper import *
-from datetime import datetime
+from mangum import Mangum
 
 app = FastAPI()
+handler = Mangum(app)
+
 M = Mega()
 S = Scraper()
+
 
 @app.get("/roster")
 def getRoster():
