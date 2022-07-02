@@ -33,3 +33,8 @@ def getNumbers():
 @app.get('/multipliers')
 def getMultipliers():
     return toDict(M.refs, 'mega_number')
+
+@app.put('/new scrape')
+def updateNums():
+    S.day_scrape()
+    return getDate()

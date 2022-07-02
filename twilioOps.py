@@ -1,5 +1,5 @@
 from twilio.rest import Client
-import info
+import info as info
 
 
 def notif(Message: str) -> None:

@@ -1,6 +1,4 @@
 serviceAccountKey.json
 info.py
 testbed.py
--lib
-*.zip
 *.pyc
