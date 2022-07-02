@@ -2,3 +2,4 @@ serviceAccountKey.json
 info.py
 testbed.py
 *.pyc
+__pycache__
