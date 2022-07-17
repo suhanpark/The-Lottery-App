@@ -14,10 +14,11 @@
 
 <h2>Summary</h2>
     <div align="left">
-        
+        ** Backend **
+    
         Language: Python
     
-        API & DB: Twilio SMS, Firebase Firestore, AWS Lambda Automation
+        API & DB: Twilio SMS, Firebase Firestore, AWS Lambda Automation, FastAPI
 
         Data collection: BS4 Web Scraping
     
@@ -27,6 +28,7 @@
         and finds the most probable combinations of the numbers using the algorithm inspired by Lottery Mathematics. 
         Every Tuesday at 11 PM EST, the app automatically collects the newly drawn numbers and calculates the new combinations,
         then sends them to mobile phone SMS.
+        Currently paused for service due to AWS pricing.
 
 # <h2 align >Structure Overview</h2>
 <h3 align = "center"><img src="https://user-images.githubusercontent.com/44104676/174250422-d611fa79-a8d2-4de8-ac1a-7e60dacb4454.png" width="50%"/></h3>
