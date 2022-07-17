@@ -1,5 +1,5 @@
 <h1 align = "center">Lottery Number Picker</h1>
-<h3 align = "center">🚧 under construction 🚧</h3>
+// <h3 align = "center">🚧 under construction 🚧</h3>
 <h3 align = "center">App Documentation</h3>
 
 <div align="center">
